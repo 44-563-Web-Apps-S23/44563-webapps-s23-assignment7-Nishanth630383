@@ -31,6 +31,9 @@
   </div>
   <div class="container border" id="help" style="background-color: aquamarine;font-family: 'Times New Roman', Times, serif;">
   <p>Help report</p>
+</div><br>
+<div class="container">
+    <button type="button" class="btn btn-primary" onclick="newGame()">New Game</button>
 </div>
 <br>
 <div class="container">
@@ -138,6 +141,16 @@
            else{
             document.getElementById("help").innerHTML= "sorry, no help available";
            }
+        }
+        function newGame(){
+            mouseLocation = Math.floor(Math.random()*24)
+            catLocation = Math.floor(Math.random()*24)
+            document.getElementById("bushes").innerHTML = "Number of bushes checked is 0"
+            document.getElementById("penalty").innerHTML = "Penalty is 0"
+            for(var i=0;i<=23;i++){
+                document.getElementById(ids[i]).src="bushes.jpg"
+                
+            }
         }
       
 </script>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html> <head>
-    <title>DelayQ</title>
+    <title>delayQ</title>
     <style>
     .flex-container {
       display: flex;  flex-direction:row;
@@ -26,9 +26,9 @@
 <body>
     <h1>Nishanth Raju Saraswathi builds a delaying queue</h1>
 		<div class="flex-container" id="target">
-		  <div class="delayq">row item 1</div>   
-		  <div class="delayq">row item 2</div>  
-		  <div class="delayq">row item 3</div>  
+		  <div class="delayQ">row item 1</div>   
+		  <div class="delayQ">row item 2</div>  
+		  <div class="delayQ">row item 3</div>  
 		</div>
 	
 	<p> Press the button to create an new element of type div and then add it to the container.
@@ -39,6 +39,7 @@
 		<button onclick="makeNewDiv()" class="btn btn-primary">Add Value</button>
         <button onclick="get()" class="btn btn-info">Get</button>
         <button onclick="delay()" class="btn btn-light">Delay</button>
+        <button onclick="promote()" class="btn btn-secondary">Promote</button>
 	
 	
 </body>
@@ -48,7 +49,7 @@
 		let element = document.createElement("div")
 		element.innerHTML = document.getElementById("inputElement").value
 		element.style.color = "orange"
-        element.className = "delayq"
+        element.className = "delayQ"
 
 		
 		let container = document.getElementById('target')
@@ -57,7 +58,7 @@
 	}
     function get(){
         var queueItems = []
-        queueItems = document.getElementsByClassName("delayq")
+        queueItems = document.getElementsByClassName("delayQ")
         length = queueItems.length
 
         if(length>0){
@@ -66,13 +67,29 @@
     }
     function delay(){
         var queueItems = []
-        queueItems = document.getElementsByClassName("delayq")
+        queueItems = document.getElementsByClassName("delayQ")
         length = queueItems.length
 
         if(length>1){
             var removedItem = queueItems[0]
             document.getElementById('target').insertBefore(removedItem,queueItems[length])
         }
+    }
+    function promote(){
+        var queueItems = document.getElementsByClassName("delayQ")
+        var length = queueItems.length
+        var random = Math.floor(Math.random()*(length))
+        console.log(random)
+
+        let element = document.createElement("div")
+		element.innerHTML = queueItems[random].textContent
+		element.style.color = "orange"
+        element.className = "delayQ"
+
+		
+		let container = document.getElementById('target')
+         queueItems[random].remove()
+        container.insertBefore(element,queueItems[0])
     }
 </script>
 </html>	
